@@ -26,12 +26,12 @@ public class GreetingController {
         this.meterRegistry = meterRegistry;
         requests_counter_with_name = Counter.builder("greeting.requests.counter").tag("name","exists").register(meterRegistry);
         requests_counter_without_name = Counter.builder("greeting.requests.counter").tag("name","not_exists").register(meterRegistry);
+        Duration[] durations = {Duration.ofMillis(200), Duration.ofMillis(500), Duration.ofMillis(600), Duration.ofMillis(800),Duration.ofMillis(1000),Duration.ofMillis(3000)};
         histogram_timer = Timer.builder("greeting.histogram.timer")
                 .publishPercentiles(0.5, 0.95) // median and 95th percentile (1)
                 .publishPercentileHistogram() // (2)
-                .sla(Duration.ofMillis(200)) // (3)
                 .minimumExpectedValue(Duration.ofMillis(100)) // (4)
-                .maximumExpectedValue(Duration.ofSeconds(10)).register(meterRegistry);
+                .maximumExpectedValue(Duration.ofSeconds(5)).register(meterRegistry);
     }
 
     @GetMapping("/greeting")
