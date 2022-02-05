@@ -56,6 +56,7 @@ public class GreetingController {
                 }
             }
             log.info("HTTP /greeting request name {}",name);
+            log.info("my.param = ["+System.getProperty("my.param")+"]");
             return new Greeting(counter.incrementAndGet(), String.format(template, name));
         });
 

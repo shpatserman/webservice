@@ -12,6 +12,8 @@ public class WebserviceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(WebserviceApplication.class, args);
 		log.info("Simple log statement with input {}", "test message");
+		log.info("my.param = ["+System.getProperty("my.param")+"]");
+
 	}
 
 
