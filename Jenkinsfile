@@ -7,6 +7,7 @@ node('agent1') {
   stage('Checkout SCM') {
     // git branch: "${env.BRANCH_NAME}", credentialsId: '3a58a7d8-1eeb-424a-9407-951e2c50ecb7', url: "https://github.com/shpatserman/webservice.git"
     git branch: "${env.BRANCH_NAME}", credentialsId: 'jenkins_github', url: "git@github.com:shpatserman/webservice.git"
+    sh 'ls -1'
   }
 
 }
