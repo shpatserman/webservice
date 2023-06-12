@@ -5,7 +5,7 @@ node('agent1') {
 
   echo "${env.BRANCH_NAME}"
   stage('Checkout SCM') {
-    git branch: 'branchName', credentialsId: 'your_credentials', url: "giturlrepo"
+    git branch: "${env.BRANCH_NAME}", credentialsId: 'jenkins_github', url: "git@github.com:shpatserman/webservice.git"
   }
 
 }
